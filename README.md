@@ -78,7 +78,6 @@ Your app will open at http://localhost:5173/
 
 - Never share your API token
 - Keep `.env` file private
-- Use `.env.example` as a template for setup instructions
 
 ## 🏗️ Build & Deploy
 
