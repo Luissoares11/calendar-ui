@@ -1,0 +1,56 @@
+services:
+  calendar-ui:
+    # Build from Dockerfile in current directory
+    build: .
+
+    # Container name
+    container_name: calendar-ui
+
+    # Port mapping - serves on port 3000
+    ports:
+      - "3000:3000"
+
+    # Environment variables
+    environment:
+      - VITE_CALENDAR_SERVICE_URL=${VITE_CALENDAR_SERVICE_URL:-http://calendar:8010}
+      - VITE_CALENDAR_API_TOKEN=${VITE_CALENDAR_API_TOKEN:-default-token}
+
+    # Restart automatically if it crashes
+    restart: unless-stopped
+
+    # Network - same as calendar-service so they can communicate
+    networks:
+      - edith-network
+
+    # Optional: depends_on ensures calendar-service starts first
+    depends_on:
+      - calendar
+
+  calendar:
+    # Your existing calendar-service
+    build: ../calendar-service
+
+    container_name: calendar-service
+
+    ports:
+      - "8010:8010"
+
+    environment:
+      - CALENDAR_API_TOKEN=${CALENDAR_API_TOKEN:-default-token}
+      - TIMEZONE=${TIMEZONE:-Europe/Lisbon}
+      - DATABASE_PATH=data/calendar.db
+
+    volumes:
+      - ../calendar-service/data:/app/data
+      - ../calendar-service/logs:/app/logs
+
+    restart: unless-stopped
+
+    networks:
+      - edith-network
+
+
+networks:
+  edith-network:
+    name: edith-network
+    driver: bridge
