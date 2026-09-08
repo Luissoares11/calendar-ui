@@ -9,7 +9,7 @@ const CATEGORY_COLORS = {
   holiday: 'green'
 }
 
-export default function MonthGrid({ currentDate, selectedDate, onDateSelect, events, loading, onPrevMonth, onNextMonth, onDateChange }) {
+export default function MonthGrid({ currentDate, selectedDate, onDateSelect, events, onPrevMonth, onNextMonth, onDateChange }) {
   const [showPicker, setShowPicker] = useState(false)
   const [pickerMonth, setPickerMonth] = useState(currentDate.getMonth())
   const [pickerYear, setPickerYear] = useState(currentDate.getFullYear())
@@ -37,17 +37,6 @@ export default function MonthGrid({ currentDate, selectedDate, onDateSelect, eve
       onDateChange(newDate)
     }
     setShowPicker(false)
-  }
-
-  if (loading) {
-    return (
-      <div className="month-grid">
-        <div className="empty-state">
-          <div className="loading-spinner"></div>
-          <p>Loading calendar...</p>
-        </div>
-      </div>
-    )
   }
 
   const monthParts = getMonthYearString(currentDate).split(' ')

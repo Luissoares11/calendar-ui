@@ -265,7 +265,6 @@ export default function App() {
           selectedDate={selectedDate}
           onDateSelect={setSelectedDate}
           events={events}
-          loading={loading}
           onPrevMonth={handlePrevMonth}
           onNextMonth={handleNextMonth}
           onDateChange={setCurrentDate}

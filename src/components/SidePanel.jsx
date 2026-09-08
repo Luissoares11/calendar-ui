@@ -69,6 +69,13 @@ export default function SidePanel({
             <div className="panel-date-day">{dayNum}</div>
             <div className="panel-date-info">{dayName}, {displayDate.toLocaleString('en-US', { month: 'short', year: 'numeric' })}</div>
           </div>
+          <button
+            onClick={onAddEvent}
+            className="panel-add-btn"
+            title="Add event"
+          >
+            +
+          </button>
         </div>
       </div>
 
@@ -269,7 +276,7 @@ export default function SidePanel({
         )}
       </div>
 
-      <div style={{ padding: 'var(--spacing-lg) var(--spacing-xl)', borderTop: '1px solid var(--border-color)' }}>
+      <div className="panel-footer" style={{ padding: 'var(--spacing-lg) var(--spacing-xl)', borderTop: '1px solid var(--border-color)' }}>
         <button
           className="btn btn-primary"
           onClick={onAddEvent}
