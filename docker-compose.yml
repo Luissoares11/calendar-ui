@@ -1,24 +1,18 @@
 services:
   calendar-ui:
-    # Build from Dockerfile in current directory
-    build: .
+    build:
+      context: .
+      args:
+        - VITE_CALENDAR_SERVICE_URL=${VITE_CALENDAR_SERVICE_URL:-http://100.91.106.89:8010}
+        - VITE_CALENDAR_API_TOKEN=${VITE_CALENDAR_API_TOKEN:-default-token}
 
-    # Container name
     container_name: calendar-ui
 
-    # Port mapping - serves on port 3000
     ports:
       - "3000:3000"
 
-    # Environment variables
-    environment:
-      - VITE_CALENDAR_SERVICE_URL=${VITE_CALENDAR_SERVICE_URL:-http://calendar-service:8010}
-      - VITE_CALENDAR_API_TOKEN=${VITE_CALENDAR_API_TOKEN:-default-token}
-
-    # Restart automatically if it crashes
     restart: unless-stopped
 
-    # Network - connects to calendar-service
     networks:
       - edith-network
 
