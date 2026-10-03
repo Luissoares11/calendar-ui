@@ -157,19 +157,36 @@ export async function createEvent(eventData) {
 
 /**
  * Update an event
+ * @param {string} eventId - Event ID
+ * @param {object} eventData - New event data
+ * @param {string} originalTitle - Original event title (for API identification)
  */
-export async function updateEvent(eventId, eventData) {
+export async function updateEvent(eventId, eventData, originalTitle) {
   try {
     const payload = {
-      action: 'update',
-      title: eventData.title,
-      type: eventData.category || 'work',
-      time: eventData.start_time || '',
-      notes: eventData.description || '',
-      recurrence: 'none'
+      action: 'edit',
+      title: originalTitle || eventData.title,
+      new_title: eventData.title,
+      new_date: eventData.date,
+      new_time: eventData.start_time || '',
+      new_notes: eventData.description || ''
     }
-    const response = await client.put(`/events/${eventId}`, payload)
-    return response.data
+    const response = await client.post('/events/edit', payload)
+
+    // Construct the updated event from request data since API only returns success message
+    const updatedEvent = {
+      id: eventId,
+      title: eventData.title,
+      date: eventData.date,
+      start_time: eventData.start_time || '',
+      category: eventData.category || 'work',
+      type: eventData.category || 'work',
+      is_task: eventData.is_task || false,
+      completed: eventData.completed || false,
+      description: eventData.description || '',
+      notes: eventData.description || ''
+    }
+    return updatedEvent
   } catch (error) {
     handleError(error)
   }

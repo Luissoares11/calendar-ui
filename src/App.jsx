@@ -216,7 +216,7 @@ export default function App() {
   const handleAddEvent = async (eventData) => {
     try {
       if (editingEvent) {
-        await updateEvent(editingEvent.id, eventData)
+        await updateEvent(editingEvent.id, eventData, editingEvent.title)
         setEditingEvent(null)
       } else {
         await addEvent(eventData)

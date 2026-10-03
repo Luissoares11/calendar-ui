@@ -95,11 +95,11 @@ export function useEvents(startDate, endDate) {
   }, [])
 
   // Update event
-  const updateEventData = useCallback(async (eventId, eventData) => {
+  const updateEventData = useCallback(async (eventId, eventData, originalTitle) => {
     setSyncing(true)
     setError(null)
     try {
-      const updated = await calendarClient.updateEvent(eventId, eventData)
+      const updated = await calendarClient.updateEvent(eventId, eventData, originalTitle)
       setEvents(prev => {
         const newEvents = prev.map(e => e.id === eventId ? updated : e)
         localStorage.setItem('calendar_events', JSON.stringify(newEvents))
