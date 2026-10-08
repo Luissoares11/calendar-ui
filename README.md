@@ -8,7 +8,7 @@ A beautiful, modern, and fully-featured calendar application built with React + 
 - **Month View** - Beautiful 7-column calendar grid with current day highlighting
 - **Event Management** - Create, edit, and delete events with rich details
 - **Task Support** - Deadline-type events with checkbox completion status
-- **Category Support** - Color-coded event categories (Work, Personal, Meeting, Birthday, Holiday)
+- **Category Support** - Color-coded event categories (Exam, Appointment, Birthday, Meeting, Deadline, Other)
 - **Today Section** - Desktop sidebar showing today's events and tasks
 - **Date Selection** - Click any date to see all events for that day
 - **Event Indicators** - Visual dots on dates with events (max 3 dots, +N for more)
