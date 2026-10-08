@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import { formatDateKey } from '../utils/dateUtils'
 
-const CATEGORIES = ['Work', 'Personal', 'Meeting', 'Birthday', 'Holiday']
+const CATEGORIES = ['Exam', 'Appointment', 'Birthday', 'Meeting', 'Deadline', 'Other']
 
 export default function EventForm({ selectedDate, onSubmit, onClose, editingEvent }) {
   const [formData, setFormData] = useState({
     title: '',
     start_time: '',
-    category: 'work',
+    category: 'other',
     is_task: false,
     description: ''
   })
@@ -19,7 +19,7 @@ export default function EventForm({ selectedDate, onSubmit, onClose, editingEven
       setFormData({
         title: editingEvent.title || '',
         start_time: editingEvent.start_time || '',
-        category: editingEvent.category || 'work',
+        category: editingEvent.category || 'other',
         is_task: editingEvent.is_task || false,
         description: editingEvent.description || ''
       })

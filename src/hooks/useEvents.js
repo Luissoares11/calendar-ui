@@ -73,8 +73,8 @@ export function useEvents(startDate, endDate) {
         title: eventData.title,
         date: eventData.date.split('T')[0] || eventData.date, // Convert ISO to YYYY-MM-DD
         start_time: eventData.start_time || null,
-        category: eventData.category || 'work',
-        type: eventData.category || 'work',
+        category: eventData.category || 'other',
+        type: eventData.category || 'other',
         is_task: eventData.is_task || false,
         completed: eventData.completed || false,
         description: eventData.description || '',

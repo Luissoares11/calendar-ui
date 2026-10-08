@@ -2,11 +2,12 @@ import { formatDateKey, groupEventsByDate } from '../utils/dateUtils'
 import { useState } from 'react'
 
 const CATEGORY_COLORS = {
-  work: 'cyan',
-  personal: 'purple',
-  meeting: 'orange',
+  exam: 'purple',
+  appointment: 'green',
   birthday: 'red',
-  holiday: 'green'
+  meeting: 'orange',
+  deadline: 'red',
+  other: 'cyan'
 }
 
 export default function SidePanel({

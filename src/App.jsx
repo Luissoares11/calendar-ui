@@ -14,7 +14,7 @@ const DEMO_EVENTS = [
     title: 'Sprint Planning',
     date: new Date().toISOString(),
     start_time: '09:00',
-    category: 'work',
+    category: 'deadline',
     is_task: false,
     completed: false,
     description: 'Roadmap review'
@@ -24,7 +24,7 @@ const DEMO_EVENTS = [
     title: 'Design Review',
     date: new Date().toISOString(),
     start_time: '14:00',
-    category: 'work',
+    category: 'appointment',
     is_task: false,
     completed: false,
     description: 'Frame share'

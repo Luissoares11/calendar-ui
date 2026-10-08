@@ -2,11 +2,12 @@ import { useState, useRef } from 'react'
 import { getMonthDates, isSameDay, isToday, formatDateKey, groupEventsByDate, getMonthYearString } from '../utils/dateUtils'
 
 const CATEGORY_COLORS = {
-  work: 'cyan',
-  personal: 'purple',
-  meeting: 'orange',
+  exam: 'purple',
+  appointment: 'green',
   birthday: 'red',
-  holiday: 'green'
+  meeting: 'orange',
+  deadline: 'red',
+  other: 'cyan'
 }
 
 export default function MonthGrid({ currentDate, selectedDate, onDateSelect, events, onPrevMonth, onNextMonth, onDateChange }) {
