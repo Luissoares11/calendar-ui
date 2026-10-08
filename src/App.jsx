@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import MonthGrid from './components/MonthGrid'
 import SidePanel from './components/SidePanel'
 import EventForm from './components/EventForm'
+import NotifyButton from './components/NotifyButton'
 import { useEvents } from './hooks/useEvents'
 import { getMonthDates } from './utils/dateUtils'
 import './styles/theme.css'
@@ -371,6 +372,18 @@ export default function App() {
           </button>
         </div>
       )}
+
+      {/* Notifications */}
+      <div
+        style={{
+          position: 'fixed',
+          top: 'calc(env(safe-area-inset-top, 0px) + 0.75rem)',
+          right: '1rem',
+          zIndex: 50
+        }}
+      >
+        <NotifyButton />
+      </div>
 
       {/* Debug Panel */}
       <div
